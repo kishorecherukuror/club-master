@@ -1,0 +1,2 @@
+module PunchqueriesHelper
+end

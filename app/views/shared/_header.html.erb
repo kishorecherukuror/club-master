@@ -1,0 +1,59 @@
+	<div class="toph1">
+	  	<div class="container">
+			<div class="logo pleft">
+				<h1>Monthly Club</h1> 
+			</div>
+			<div class="pright" style="margin: 10px 120px auto auto;">
+        		<div class="nav navbar-nav navT">
+			<% if user_signed_in? %>
+	    				<a href='#' data-toggle="dropdown"> Hi, <%= current_user.email %> </a>
+					        
+					        	
+					        	<%= link_to "| Edit Profile |", edit_user_registration_path %>
+					        	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+					        
+				       
+	        		<% else %>
+	        			<a href='/users/sign_in'>Sign In </a>
+	    				<div class="active"><a href="/users/sign_up">Sign Up </a></div>
+	        		<% end %>
+	        	</div>
+	        	</div>
+</div> 
+	<div class="navbar thmcolor" role="navigation">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	    </div>
+	    <div class="collapse navbar-collapse">
+	      <ul class="nav navbar-nav navM">
+	        <li class="active"><a href="/">Home</a></li>
+	        <li><a href="/about">About Club</a></li>
+	        <li><a href="/why_club">Why Club</a></li>
+	        <li><a href="/club/1">Memberships</a></li>
+	       <!-- <li><a class="dropdown-toggle" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown" href="#">Clubs<b class="caret"></b></a>
+	         <ul class="dropdown-menu">
+                 <li><%= link_to "Coffee", club_coffee_path %></li>
+                 <li><%= link_to "Wine", club_wine_path %></li>
+                 <li><%= link_to "Beer", club_beer_path %></li>
+                 <li><%= link_to "Cigars", club_cigars_path %></li>
+                 <li><%= link_to "Computer Games", club_games_path %></li>
+                 <li><%= link_to "Flowers", club_flowers_path %></li>
+             </ul>
+	        </li> -->
+	        
+	        <li><%= link_to "Review", punchqueries_new_path %></li>
+	                
+	      </ul>
+	    </div><!-- /.nav-collapse -->
+	  </div><!-- /.container -->
+	</div><!-- /.navbar -->
+<script type="text/javascript">
+
+</script>
+

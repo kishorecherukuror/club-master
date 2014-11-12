@@ -1,0 +1,22 @@
+<section class="container pd50">
+    <div class="login">
+      <h1>Login to Club</h1>
+		<%= render partial: '/shared/flash', collection: [:notice, :alert, :success, :error], as: :level %>
+      	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <p>
+        	<%= f.email_field :email, autofocus: true, class: "lgn", required: true, placeholder: "Email *" %>
+        </p>
+        <p>
+        	<%= f.password_field :password, autocomplete: "off", class: "lgn", required: true, placeholder: "Password *" %>
+        </p>
+        <p class="submit"><%= f.submit "Sign In", id: 'submt', class: 'lgn' %></p>
+      <% end %>
+    </div>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    	<div class="login-help">
+  			<p>Forgot your password?  <%= link_to "Click here to reset it", new_password_path(resource_name) %>
+      		 </p>
+    	</div>
+	<% end -%>
+</section>

@@ -1,0 +1,44 @@
+<div class="container white-font">
+	<div class="mg10 thmcolor pd30">
+		<center><h1> Register For Beer Membership </h1>
+		<h3 class="pcenter under-construct"><span class='pd20'>It has been a tough catch for our experts to choose the best hand crafted beer from among the 
+thousands of varieties specially brewed by micro-brewers within the country. Its time for the 
+Americans to get the taste of our finest collection of hand crafted beers selected by our experts. 
+Each member who joins the club gets a 18 pack of finely crafted beers for a month or a 3 1Liter 
+bottles of the most famous draught beers(Top of our selection).</center>
+</span></h3>
+		<div class="dualgear">
+			<span class='gearOuter'></span>
+			<span class='gearInner'></span>
+		</div>			
+	</div>
+	
+</div><center>
+<p><h4><font color="black"><select name="Select", class="months">
+<option value="Select" >Select Duration</option>
+<option value="Three" >3</option>
+<option value="six">6</option>
+<option value="Nine" >9</option>
+<option value="Twelve" >12</option>
+</select></font></h4></p>
+
+        
+       
+          Amount:<%= text_field_tag  autocomplete: "off", class: "form-control" , required: true, placeholder: 'Enter Email' %>
+       
+    
+
+</center>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+            $('.months').click(function(){
+                
+                var months = $(this).val();
+                alert(months);
+                
+        });
+ 
+    });
+    
+  </script>

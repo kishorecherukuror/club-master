@@ -1,0 +1,13 @@
+<%= content_tag( "div", class: "flash_message" ) do %>
+	<% if flash[level].present? %>
+		
+		<% if level.to_s == "success" %>
+	    	<span class="f-green fs12"><%= flash[level] %></span>
+		<% elsif level.to_s == "error" %>
+	    	<span class="f-red fs12"><%= flash[level] %></span>
+		<% else %>
+	    	<span class="fs12"><%= flash[level] %></span>
+		<% end %>
+	  	
+	<% end %>
+<% end %>

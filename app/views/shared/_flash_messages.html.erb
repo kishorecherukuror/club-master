@@ -1,0 +1,13 @@
+<div id="flash_message">
+	<% if flash[level].present? %>
+		<div class="<%= flash_class(level) %> pd10-LR pd5-TB" style="margin-bottom:10px;position:static;<%= 'background-color:#fcf8e3;color:#8a6d3b;' if flash_class(level) == 'info_msg' %>">
+		<% if level.to_s == "success" %>
+	    	<span class="f-green fs12"><%= flash[level] %></span>
+		<% elsif level.to_s == "error" %>
+	    	<span class="f-red fs12"><%= flash[level] %></span>
+		<% else %>
+	    	<span class="fs12"><%= flash[level] %></span>
+		<% end %>
+	  	</div>
+	<% end %>
+</div>

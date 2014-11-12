@@ -1,0 +1,44 @@
+
+<div class="container">
+  <div class="sign_up pd20">
+    <h2 class="pcenter"> Welcome to the ‘Monthly Club </h2><hr><table cellpadding="0" cellspacing="0" border="1" class="display" id="example" >
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Membership type</th>
+      <th>Credit card number</th>
+      <th>Membership start date</th>
+      <th>Duration of membership</th>
+      <th>Membership end date</th>
+      <th class="right">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr class="gradeX">
+    <td class="center"><%= current_user.id %></td>
+    <td class="center"><%= current_user.member_type %></td>
+    <td class="center"><%= current_user.ccn %></td>
+    <td class="center"><%= current_user.msd %></td>
+    <td class="center"><%= current_user.dom %></td>
+    <td class="center"><%= current_user.med %></td>
+    <td class="center"><%= current_user.amount %></td>
+  </tr>
+  <%  @memberships.each do |member| %>
+  <tr class="gradeX">
+    <td class="center"><%= member.id %></td>
+    <td class="center"><%= member.member_type %></td>
+    <td class="center"><%= member.ccn %></td>
+    <td class="center"><%= member.msd %></td>
+    <td class="center"><%= member.dom %></td>
+    <td class="center"><%= member.med %></td>
+    <td class="center"><%= member.amount %></td>
+  </tr>
+<% end %>
+
+    
+     
+    
+  </tbody>
+</table>
+ </div>
+</div>

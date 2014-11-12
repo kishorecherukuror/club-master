@@ -1,0 +1,177 @@
+<div class="container">
+  <div class="sign_up pd20">
+    <h2 class="pcenter"> Welcome to the ‘Monthly Club </h2><hr>
+    <%= form_for(@membership, url: "/club", html: {class: 'form-horizontal pd20 mg10', :onsubmit=>"return validateAge()"}) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label "membership Type ", class: 'col-sm-3 control-label', for: 'membership_ccn' %>
+        <div class="col-sm-6">
+        
+          <%= f.select :member_type, options_for_select([["Months", ""], "Coffee", "Wine", "Beer", "Cigar", "Games","Flowers"],params[:member_type].capitalize), :class => 'text-field form-control', class: 'dom', :value=>params[:member_type]  %>
+          <%= text_field_tag "dob", "", :value=>current_user.dob, :id=>"membership_dob", autocomplete: "off", class: "form-control",class: "datepicker", required: true, placeholder: 'Enter DOB', :style=>"visibility: hidden" %>
+           
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Credit Card Number * ", class: 'col-sm-3 control-label', for: 'membership_ccn' %>
+        <div class="col-sm-6">
+          <%= f.text_field :ccn, autocomplete: "off", class: "form-control", required: true, placeholder: 'Enter Credit Card Number' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "membership Start Date *", class: 'col-sm-3 control-label', for: 'membership_msd' %>
+        <div class="col-sm-6">
+          <%= f.text_field :msd, autocomplete: "off", class: "form-control",id: "msd", class: "datepicker",  required: true, placeholder: 'Enter membership Start Date', :onchange=>"set_end_date()" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Duration Of membership *", class: 'col-sm-3 control-label', for: 'membership_dom' %>
+        <div class="col-sm-6">
+          <%= f.select :dom, options_for_select([["Months", ""], "3", "6", "9", "12"]), :class => 'text-field form-control', :onchange=>"set_end_date()"%>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <%= f.label "membership End Date *", class: 'col-sm-3 control-label', for: 'membership_med' %>
+        <div class="col-sm-6">
+          <%= f.text_field :med, autocomplete: "off", class: "form-control ", required: true, placeholder: 'Enter membership End Date',class: "datepicker",class: "med" %>
+        </div>
+      </div>      
+
+        <div class="form-group">
+        <%= f.label "Amount *", class: 'col-sm-3 control-label', for: 'membership_amount' %>
+        <div class="col-sm-6">
+          <%= f.text_field :amount, autocomplete: "off", class: "form-control", required: true, placeholder: 'Enter Amount' %>
+        </div>
+      </div>      
+
+       <div class="">
+        <%= f.label " ", class: 'col-sm-3' %>
+        <div><%= f.submit "Add", class: 'col-sm-6 btn btn-primary' %></div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+<script>
+$('.datepicker').datepicker({
+    startDate: '-3d'
+})
+Boolean. Default: false
+</script>
+<script>
+    $(document).ready(function(){
+      $('.datepicker').datepicker()
+            $('.med').keyup(function(){
+                calculateDate();
+        });
+ 
+    });
+
+    
+    function calculateDate() {
+      var msd = $('#msd').val();
+
+      
+      var e = ( msd.getMonth( )  ) + '/' + msd.getDate( ) + '/' + msd.getFullYear( );
+      d = msd;
+      var dom = $('.dom').val();
+       var med = $('.med')
+      med.val(e);
+    }
+
+
+  </script>
+  <script>
+  $(document).ready(function(){
+      $('.datepicker').datepicker()
+            
+ 
+    });
+
+     function validateAge()
+     {
+        var dob = $('#membership_dob').val();
+
+        var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+        var dt = new Date(dob.replace(pattern,'$3-$2-$1'));
+        today = new Date
+        if ((today.getFullYear()-dt.getFullYear())<18 && ($("#membership_member_type").val()=="Beer" || $("#membership_member_type").val()=="Wine" || $("#membership_member_type").val()=="Cigar"))
+        {
+          alert("Age less than 18");
+          return false;
+        }
+
+     }
+     function set_end_date()
+     {
+       var start_date = $('#msd').val();
+       if (start_date!="")
+       {
+        var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+        var dt = new Date(start_date.replace(pattern,'$3-$2-$1'));
+        var duration = $('#membership_dom').val();
+        if (duration=="")
+          duration="0";
+        dt.setMonth(dt.getMonth() + parseInt(duration) )
+        $('#membership_med').val(dt.getDate() + "/" + (dt.getMonth()+1) + "/" + dt.getFullYear())
+      }
+     }
+
+     function set_amount()
+    {
+      var duration = $('#membership_dom').val();
+      var member_tupe=$("#membership_member_type").val();
+      var amount="0";
+      if(duration=="" || member_tupe=="" ) amount="";
+      else if (duration=="3" )
+      {
+        if (member_tupe=="Beer") amount ="40";
+        else if(member_tupe=="Coffee") amount ="50";
+        else if(member_tupe=="Wine") amount ="60";
+        else if(member_tupe=="Ciger") amount ="70";
+        else if(member_tupe=="Games") amount ="80";
+        else amount ="90";
+      }
+      else if(duration=="6" )
+      {
+        if (member_tupe=="Beer") amount ="140";
+        else if(member_tupe=="Coffee") amount ="150";
+        else if(member_tupe=="Wine") amount ="160";
+        else if(member_tupe=="Ciger") amount ="170";
+        else if(member_tupe=="Games") amount ="180";
+        else amount ="190";
+      }
+      else if(duration=="9" )
+      {
+        if (member_tupe=="Beer") amount ="240";
+        else if(member_tupe=="Coffee") amount ="250";
+        else if(member_tupe=="Wine") amount ="260";
+        else if(member_tupe=="Ciger") amount ="270";
+        else if(member_tupe=="Games") amount ="280";
+        else amount ="290";
+      }
+      else if(duration=="12" )
+      {
+        if (member_tupe=="Beer") amount ="340";
+        else if(member_tupe=="Coffee") amount ="350";
+        else if(member_tupe=="Wine") amount ="360";
+        else if(member_tupe=="Ciger") amount ="370";
+        else if(member_tupe=="Games") amount ="380";
+        else amount ="390";
+      }
+      else  amount ="0";
+      $("#membership_amount").val(amount);
+    }
+    $( "#membership_member_type" ).change(function() {
+     set_amount();
+    });
+    $( "#membership_dom" ).change(function() {
+      set_amount();
+      set_end_date();
+    });
+
+  </script>

@@ -1,0 +1,15 @@
+<center><div class="punch">
+	<table>
+	<%= form_for @punch, :url => {:controller => 'punchqueries', :action => 'create'} do |f|%>
+	<tr><td>
+Title:<%= f.text_field :query %></td></tr><br /><tr><td><br />
+Review:<%= f.text_area :description , cols: 70,rows: 5%></td></tr><br /><tr><td>
+<%= f.submit value: "Review" %></td></tr></table></div></center>
+<%end%>
+
+<style type="text/css">
+.punch {
+	margin-top: 50px;
+	background-color: #FFF790;
+}
+</style>
