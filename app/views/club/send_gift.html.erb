@@ -23,7 +23,6 @@
 						<%= image_tag coffee.image.url, :width => '200px', :height => '200px' %>
 					</a>
 				</li>
-				</br>
 			<% end %>
 		</ul>
 	<% end %>
@@ -37,7 +36,6 @@
 						<%= image_tag wine.image.url, :width => '100px', :height => '100px' %>
 					</a>
 				</li>
-				</br>
 			<% end %>
 		</ul>
 	<% end %>
@@ -47,11 +45,10 @@
 		<ul id="cigar_paging">
 			<% @cigars.each do |cigar| %>
 				<li style="list-style-type: none;">
-					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => cigar.id, :item_type => 'Cigar')%> >
+					<a href=<%= (current_user.present? and current_user.age > 17) ? club_show_gift_path(:club_id => 1, :item_id => cigar.id, :item_type => 'Cigar') : "javascript:void(0)"%> >
 						<%= image_tag cigar.image.url, :width => '100px', :height => '100px' %>
 					</a>
 				</li>
-				</br>
 			<% end %>
 		</ul>
 	<% end %>
@@ -65,12 +62,31 @@
 						<%= image_tag beer.image.url, :width => '100px', :height => '100px' %>
 					</a>
 				</li>
-				</br>
+			<% end %>
+		</ul>
+	<% end %>
+	</br>
+	<h1 class="pcenter"> Games </h1><hr>
+	<% if @games.present? %>
+		<ul id="game_paging">
+			<% @games.each do |game| %>
+				<li style="list-style-type: none;">
+					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => game.id, :item_type => 'Game')%> >
+						<%= image_tag game.image.url, :width => '100px', :height => '100px' %>
+					</a>
+				</li>
 			<% end %>
 		</ul>
 	<% end %>
  </div>
 </div>
 <script>
-	$(".three_images").quickPagination({pageSize:"3"});
+	jQuery(function($){
+		$('ul#flower_paging').easyPaginate({step:3});
+		$('ul#club_coffee_paging').easyPaginate({step:3});
+		$('ul#wine_paging').easyPaginate({step:3});
+		$('ul#beer_paging').easyPaginate({step:3});
+		$('ul#cigar_paging').easyPaginate({step:3});
+		$('ul#game_paging').easyPaginate({step:3});
+	}); 
 </script>

@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+	ol#pagination{overflow:hidden; text-align: center; list-style-position:inside;}
+	ol#pagination li{
+		float:left;
+		list-style:none;
+		cursor:pointer;
+		margin:0 0 0 .5em;
+		}
+	ol#pagination li.current{color:#f00;font-weight:bold;}

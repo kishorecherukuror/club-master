@@ -6,6 +6,7 @@ class ClubController < ApplicationController
     @wines = Wine.all
     @beers = Beer.all
     @cigars = Cigar.all
+    @games = Game.all
   end
   
   def show_gift
@@ -18,7 +19,9 @@ class ClubController < ApplicationController
 	elsif params["item_type"] == 'Cigar'
 	    @item = Cigar.find(params[:item_id])
 	elsif params["item_type"] == 'Beer'
-	    @item = Beers.find(params[:item_id])
+	    @item = Beer.find(params[:item_id])
+	elsif params["item_type"] == 'Game'
+	    @item = Game.find(params[:item_id])
 	end
   end
 

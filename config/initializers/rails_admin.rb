@@ -40,7 +40,7 @@ RailsAdmin.config do |config|
 	list do
 		field :name
 		field :image do
-			thumb_method :image
+			thumb_method :cart
 		end
 		field :user
 	end
@@ -56,7 +56,7 @@ RailsAdmin.config do |config|
 	list do
 		field :name
 		field :image do
-			thumb_method :image
+			thumb_method :cart
 		end
 	end
 	edit do
@@ -70,7 +70,7 @@ RailsAdmin.config do |config|
 	list do
 		field :name
 		field :image do
-			thumb_method :image
+			thumb_method :cart
 		end
 	end
 	edit do
@@ -84,7 +84,7 @@ RailsAdmin.config do |config|
 	list do
 		field :name
 		field :image do
-			thumb_method :image
+			thumb_method :cart
 		end
 	end
 	edit do
@@ -98,7 +98,21 @@ RailsAdmin.config do |config|
 	list do
 		field :name
 		field :image do
-			thumb_method :image
+			thumb_method :cart
+		end
+	end
+	edit do
+		field :name
+		field :image
+		include_all_fields
+    end
+  end
+  config.model Game do
+	#navigation_label "Demo Application"
+	list do
+		field :name
+		field :image do
+			thumb_method :cart
 		end
 	end
 	edit do
