@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118200547) do
+ActiveRecord::Schema.define(version: 20141118201200) do
 
   create_table "adjustments", force: true do |t|
     t.string   "source_type"
@@ -260,6 +260,16 @@ ActiveRecord::Schema.define(version: 20141118200547) do
   create_table "piggybak_variants_variants", force: true do |t|
     t.integer  "item_id",    null: false
     t.string   "item_type",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_reviews", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.string   "product_type"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

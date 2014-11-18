@@ -1,6 +1,6 @@
 class Beer < ActiveRecord::Base
 
-  
+  has_many :product_reviews, :as => :product
   has_attached_file :image, :styles => { :cart => "72x35", :thumb => '288x140' },
     :url => "/system/images/beer/:id/:style/:basename.:extension",
     :path => ":rails_root/public/system/images/beer/:id/:style/:basename.:extension"

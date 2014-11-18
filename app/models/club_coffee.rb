@@ -1,5 +1,5 @@
 class ClubCoffee < ActiveRecord::Base
-  
+  has_many :product_reviews, :as => :product
   self.table_name = "coffees"
 	acts_as_sellable   
   

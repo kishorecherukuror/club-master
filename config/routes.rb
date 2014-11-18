@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   resources :club do
 	get 'send_gift'
 	get 'show_gift'
+	get 'show_product_reviews'
   end
-  resources :club_coffees
+  resources :product_reviews
   get 'punchqueries/create'
   post 'punchqueries/create'
 

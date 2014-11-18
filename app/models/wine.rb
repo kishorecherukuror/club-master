@@ -1,4 +1,5 @@
-class Wine < ActiveRecord::Base  
+class Wine < ActiveRecord::Base 
+  has_many :product_reviews, :as => :product 
   acts_as_sellable
   has_attached_file :image, :styles => { :cart => "72x35", :thumb => '288x140' },
     :url => "/system/images/wine/:id/:style/:basename.:extension",

@@ -1,5 +1,4 @@
 class ClubCoffeesController < ApplicationController
- 
  def send_a_gift
  end
 

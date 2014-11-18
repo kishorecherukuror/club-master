@@ -24,6 +24,11 @@ class ClubController < ApplicationController
 	    @item = Game.find(params[:item_id])
 	end
   end
+  
+  def show_product_reviews
+    @item = params[:item_type].constantize.find(params[:item_id])
+    @new_product_review = @item.product_reviews.build
+  end
 
   def show
     @memberships=current_user.memberships

@@ -5,10 +5,11 @@
 	<% if @flowers.present? %>
 		<ul id="flower_paging" class="three_images" style="text-align: center;">
 			<% @flowers.each do |flower| %>
-				<li style="list-style-type: none; display: inline; padding: 10px;">
+				<li style="list-style-type: none; display: inline; padding: 5px;">
 					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => flower.id, :item_type => 'Flower')%> alt="flower">
 						<%= image_tag flower.image.url,  :width => '200px', :height => '200px' , :alt=>"flower" %>
 					</a>
+					<a href="<%= club_show_product_reviews_url(:club_id => 1, :item_type => flower.class.name, :item_id => flower.id )%>">Review</a>
 				</li>
 			<% end %>
 		</ul>
@@ -22,6 +23,7 @@
 					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => coffee.id, :item_type => 'ClubCoffee')%> >
 						<%= image_tag coffee.image.url, :width => '200px', :height => '200px' %>
 					</a>
+					<a href="<%= club_show_product_reviews_url(:club_id => 1, :item_type => coffee.class.name, :item_id => coffee.id )%>">Review</a>
 				</li>
 			<% end %>
 		</ul>
@@ -29,12 +31,13 @@
 	</br>
 	<h1 class="pcenter"> Wine </h1><hr>
 	<% if @wines.present? %>
-		<ul id="wine_paging">
+		<ul id="wine_paging" style="text-align: center;">
 			<% @wines.each do |wine| %>
-				<li style="list-style-type: none;">
+				<li style="list-style-type: none; display: inline; padding: 5px;">
 					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => wine.id, :item_type => 'Wine')%> >
-						<%= image_tag wine.image.url, :width => '100px', :height => '100px' %>
+						<%= image_tag wine.image.url, :width => '200px', :height => '200px' %>
 					</a>
+					<a href="<%= club_show_product_reviews_url(:club_id => 1, :item_type => wine.class.name, :item_id => wine.id )%>">Review</a>
 				</li>
 			<% end %>
 		</ul>
@@ -42,12 +45,13 @@
 	</br>
 	<h1 class="pcenter"> Cigars </h1><hr>
 	<% if @cigars.present? %>
-		<ul id="cigar_paging">
+		<ul id="cigar_paging" style="text-align: center;">
 			<% @cigars.each do |cigar| %>
-				<li style="list-style-type: none;">
+				<li style="list-style-type: none; display: inline; padding: 5px;">
 					<a href=<%= (current_user.present? and current_user.age > 17) ? club_show_gift_path(:club_id => 1, :item_id => cigar.id, :item_type => 'Cigar') : "javascript:void(0)"%> >
-						<%= image_tag cigar.image.url, :width => '100px', :height => '100px' %>
+						<%= image_tag cigar.image.url, :width => '200px', :height => '200px' %>
 					</a>
+					<a href="<%= club_show_product_reviews_url(:club_id => 1, :item_type => cigar.class.name, :item_id => cigar.id )%>">Review</a>
 				</li>
 			<% end %>
 		</ul>
@@ -55,12 +59,13 @@
 	</br>
 	<h1 class="pcenter"> Beers </h1><hr>
 	<% if @beers.present? %>
-		<ul id="beer_paging">
+		<ul id="beer_paging" style="text-align: center;">
 			<% @beers.each do |beer| %>
-				<li style="list-style-type: none;">
+				<li style="list-style-type: none; display: inline; padding: 5px;">
 					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => beer.id, :item_type => 'Beer')%> >
-						<%= image_tag beer.image.url, :width => '100px', :height => '100px' %>
+						<%= image_tag beer.image.url, :width => '200px', :height => '200px' %>
 					</a>
+					<a href="<%= club_show_product_reviews_url(:club_id => 1, :item_type => beer.class.name, :item_id => beer.id )%>">Review</a>
 				</li>
 			<% end %>
 		</ul>
@@ -68,12 +73,13 @@
 	</br>
 	<h1 class="pcenter"> Games </h1><hr>
 	<% if @games.present? %>
-		<ul id="game_paging">
+		<ul id="game_paging" style="text-align: center;">
 			<% @games.each do |game| %>
-				<li style="list-style-type: none;">
+				<li style="list-style-type: none; display: inline; padding: 5px;">
 					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => game.id, :item_type => 'Game')%> >
-						<%= image_tag game.image.url, :width => '100px', :height => '100px' %>
+						<%= image_tag game.image.url, :width => '200px', :height => '200px' %>
 					</a>
+					<a href="<%= club_show_product_reviews_url(:club_id => 1, :item_type => game.class.name, :item_id => game.id )%>">Review</a>
 				</li>
 			<% end %>
 		</ul>

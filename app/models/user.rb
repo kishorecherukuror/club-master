@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :memberships
   has_many :punches
+  has_many :product_reviews
   has_and_belongs_to_many :roles
   acts_as_orderer
   validates :ccn, :presence => true 
