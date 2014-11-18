@@ -14,12 +14,12 @@ development:
   pool: 5
   username: root
   password: 
-  database: club
+  database: club1
 
 production:
   adapter: mysql2
   encoding: utf8
-  database: club
+  database: club1
   pool: 5
   host: localhost
 #planbit_load

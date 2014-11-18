@@ -213,23 +213,6 @@ ActiveRecord::Schema.define(version: 20141118201200) do
     t.boolean "active",      default: false, null: false
   end
 
-  create_table "piggybak_taxonomy_navigation_nodes", force: true do |t|
-    t.string   "title"
-    t.string   "slug"
-    t.string   "position"
-    t.string   "ancestry"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "piggybak_taxonomy_navigation_nodes", ["ancestry"], name: "index_piggybak_taxonomy_navigation_nodes_on_ancestry", using: :btree
-
-  create_table "piggybak_taxonomy_sellable_taxonomies", force: true do |t|
-    t.integer "navigation_node_id",             null: false
-    t.integer "sellable_id",                    null: false
-    t.integer "sort",               default: 0, null: false
-  end
-
   create_table "piggybak_variants_option_configurations", force: true do |t|
     t.string   "klass",      null: false
     t.integer  "option_id",  null: false

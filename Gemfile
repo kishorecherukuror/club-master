@@ -49,6 +49,5 @@ gem 'tzinfo'
 gem 'cancancan'
 gem "paperclip", "~> 4.2"
 gem 'piggybak'
-gem "piggybak_taxonomy", "0.2.1"
 gem "piggybak_variants", "0.1.3"
 

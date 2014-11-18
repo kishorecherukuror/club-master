@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount RailsAdmin::Engine => 'club/admin', as: 'rails_admin'
   mount Piggybak::Engine => '/club/checkout', as: :piggybak
-  mount PiggybakTaxonomy::Engine => '/club/demo', :as => 'piggybak_taxonomy'
   
   get 'punchqueries/new'
   resources :club do
