@@ -1,20 +1,26 @@
 class ClubController < ApplicationController
- 
-  def coffee
-  end
-  def wine
-  end
-  def beer
-   
 
+  def send_gift
+    @flowers = Flower.all
+    @coffees = ClubCoffee.all
+    @wines = Wine.all
+    @beers = Beer.all
+    @cigars = Cigar.all
   end
-  def cigars
+  
+  def show_gift
+    if params["item_type"] == 'Flower'
+		@item = Flower.find(params[:item_id])
+	elsif params["item_type"] == 'ClubCoffee'
+	    @item = ClubCoffee.find(params[:item_id])
+	elsif params["item_type"] == 'Wine'
+	    @item = Wine.find(params[:item_id])
+	elsif params["item_type"] == 'Cigar'
+	    @item = Cigar.find(params[:item_id])
+	elsif params["item_type"] == 'Beer'
+	    @item = Beers.find(params[:item_id])
+	end
   end
-  def games
-  end
-  def flowers
-  end
-
 
   def show
     @memberships=current_user.memberships

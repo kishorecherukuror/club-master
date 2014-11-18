@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="sign_up pd20">
+    <h2 class="pcenter"> Welcome to Send a Gift </h2><hr>
+    <h1 class="pcenter"> Flowers </h1><hr>
+	<% if @flowers.present? %>
+		<ul id="flower_paging" class="three_images" style="text-align: center;">
+			<% @flowers.each do |flower| %>
+				<li style="list-style-type: none; display: inline; padding: 10px;">
+					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => flower.id, :item_type => 'Flower')%> alt="flower">
+						<%= image_tag flower.image.url,  :width => '200px', :height => '200px' , :alt=>"flower" %>
+					</a>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+</br>
+<h1 class="pcenter"> Coffees </h1><hr>
+	<% if @coffees.present? %>
+		<ul id="club_coffee_paging" class="three_images" style="text-align: center;">
+			<% @coffees.each do |coffee| %>
+				<li style="list-style-type: none; display: inline; padding: 5px;">
+					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => coffee.id, :item_type => 'ClubCoffee')%> >
+						<%= image_tag coffee.image.url, :width => '200px', :height => '200px' %>
+					</a>
+				</li>
+				</br>
+			<% end %>
+		</ul>
+	<% end %>
+	</br>
+	<h1 class="pcenter"> Wine </h1><hr>
+	<% if @wines.present? %>
+		<ul id="wine_paging">
+			<% @wines.each do |wine| %>
+				<li style="list-style-type: none;">
+					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => wine.id, :item_type => 'Wine')%> >
+						<%= image_tag wine.image.url, :width => '100px', :height => '100px' %>
+					</a>
+				</li>
+				</br>
+			<% end %>
+		</ul>
+	<% end %>
+	</br>
+	<h1 class="pcenter"> Cigars </h1><hr>
+	<% if @cigars.present? %>
+		<ul id="cigar_paging">
+			<% @cigars.each do |cigar| %>
+				<li style="list-style-type: none;">
+					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => cigar.id, :item_type => 'Cigar')%> >
+						<%= image_tag cigar.image.url, :width => '100px', :height => '100px' %>
+					</a>
+				</li>
+				</br>
+			<% end %>
+		</ul>
+	<% end %>
+	</br>
+	<h1 class="pcenter"> Beers </h1><hr>
+	<% if @beers.present? %>
+		<ul id="beer_paging">
+			<% @beers.each do |beer| %>
+				<li style="list-style-type: none;">
+					<a href=<%= club_show_gift_path(:club_id => 1, :item_id => beer.id, :item_type => 'Beer')%> >
+						<%= image_tag beer.image.url, :width => '100px', :height => '100px' %>
+					</a>
+				</li>
+				</br>
+			<% end %>
+		</ul>
+	<% end %>
+ </div>
+</div>
+<script>
+	$(".three_images").quickPagination({pageSize:"3"});
+</script>
