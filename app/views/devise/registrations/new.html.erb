@@ -146,16 +146,15 @@ $('.dobdatepicker').datepicker({
      function set_end_date()
      {
        var start_date = $('#msd').val();
-       console.log(start_date);
        if (start_date!="")
        {
         var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
-        var dt = new Date(start_date.replace(pattern,'$3-$2-$1'));
+        var dt = new Date(start_date.replace(pattern,'$3-$1-$2'));
         var duration = $('#user_dom').val();
         if (duration=="")
           duration="0";
-        dt.setMonth(dt.getMonth() + parseInt(duration) )
-        $('#user_med').val(dt.getDate() + "/" + (dt.getMonth()+1) + "/" + dt.getFullYear())
+        dt.setMonth(dt.getMonth() + parseInt(duration) );
+        $('#user_med').val((dt.getMonth()+1) + "/" + dt.getDate() + "/" + dt.getFullYear());
       }
      }
 
