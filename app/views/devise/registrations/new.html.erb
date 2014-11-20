@@ -22,7 +22,7 @@
 
         <%= f.label "DOB *", class: 'col-sm-3 control-label', for: 'user_dob' %>
         <div class="col-sm-6">
-          <%= f.text_field :dob, autocomplete: "off", class: "form-control",class: "datepicker", required: true, placeholder: 'Enter DOB' %>
+          <%= f.text_field :dob, autocomplete: "off", class: "form-control",class: "dobdatepicker", required: true, placeholder: 'Enter DOB' %>
         </div>
       </div>
 
@@ -42,7 +42,7 @@
       <div class="form-group">
         <%= f.label "Membership Type ", class: 'col-sm-3 control-label', for: 'user_ccn' %>
         <div class="col-sm-6">
-          <%= f.select :member_type, options_for_select([["Months", ""], "Coffee", "Wine", "Beer", "Cigar", "Games","Flowers"]), :class => 'text-field form-control', class: 'dom' %>
+          <%= f.select :member_type, options_for_select([["Type", ""], "Coffee", "Wine", "Beer", "Cigar", "Games","Flowers"]), :class => 'text-field form-control', class: 'dom' %>
         </div>
       </div>
 
@@ -91,9 +91,13 @@
 </div>
 <script>
 $('.datepicker').datepicker({
-    startDate: '-3d'
-})
-Boolean. Default: false
+    startDate: '-3d',
+    autoclose: true    
+});
+$('.dobdatepicker').datepicker({
+  autoclose: true
+  });
+
 </script>
 <script>
     $(document).ready(function(){
@@ -109,11 +113,11 @@ Boolean. Default: false
       var msd = $('#msd').val();
 
       
-      var e = ( msd.getMonth( )  ) + '/' + msd.getDate( ) + '/' + msd.getFullYear( );
+      var medVal = ( msd.getMonth( )  ) + '/' + msd.getDate( ) + '/' + msd.getFullYear( );
       d = msd;
       var dom = $('.dom').val();
        var med = $('.med')
-      med.val(e);
+      med.val(medVal);
     }
 
 
@@ -145,12 +149,12 @@ Boolean. Default: false
        if (start_date!="")
        {
         var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
-        var dt = new Date(start_date.replace(pattern,'$3-$2-$1'));
+        var dt = new Date(start_date.replace(pattern,'$3-$1-$2'));
         var duration = $('#user_dom').val();
         if (duration=="")
           duration="0";
-        dt.setMonth(dt.getMonth() + parseInt(duration) )
-        $('#user_med').val(dt.getDate() + "/" + (dt.getMonth()+1) + "/" + dt.getFullYear())
+        dt.setMonth(dt.getMonth() + parseInt(duration) );
+        $('#user_med').val((dt.getMonth()+1) + "/" + dt.getDate() + "/" + dt.getFullYear());
       }
      }
 

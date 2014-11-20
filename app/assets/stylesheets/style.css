@@ -296,3 +296,11 @@ label.info{height: 58px;background: #72BB53;border: 0px;color: #fff;box-shadow: 
 .alt-success, .success{color: green;}
 .alt-error, .error{color: red;}
 .wd100{width: 100%;}
+
+
+.cart_link {float: right; padding: 5px 20px 5px 20px;}
+.cart_link img.cart {height: 18px;width: 25px;}
+.pright a {text-decoration: none;}
+
+ul.simplePagerNav {text-align: center;}
+ul.simplePagerNav li {list-style-type: none; display: inline; padding: 12px;}

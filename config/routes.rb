@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
+  #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => 'club/admin', as: 'rails_admin'
+  mount Piggybak::Engine => '/club/checkout', as: :piggybak
+  
   get 'punchqueries/new'
-  resources :club 
+  resources :club do
+	get 'send_gift'
+	get 'show_gift'
+	get 'show_product_reviews'
+  end
+  resources :product_reviews
   get 'punchqueries/create'
   post 'punchqueries/create'
 
   devise_for :users, :controllers => { registrations: 'registrations' } 
-#  get 'club/index'
-  get 'club/coffee'
-  get 'club/wine'
-  get 'club/beer'
-  get 'club/cigars'
-  get 'club/games'
-  get 'club/flowers'
+#  get 'club/index''
   
 
 

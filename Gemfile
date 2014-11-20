@@ -26,6 +26,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'devise'
+gem 'rails_admin'
 gem 'twitter-bootstrap-rails'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data'
@@ -45,4 +46,9 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'cancancan'
+gem "paperclip", "~> 4.2"
+gem 'piggybak'
+gem "piggybak_variants", "0.1.3"
 

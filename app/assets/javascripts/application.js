@@ -15,3 +15,6 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+//= require piggybak/piggybak-application
+//= require piggybak_variants/piggybak_variants-application
+

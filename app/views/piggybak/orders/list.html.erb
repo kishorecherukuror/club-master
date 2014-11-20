@@ -1,0 +1,16 @@
+<div id="list_orders">
+	<div class="container">
+		<div class="sign_up pd20 pcenter">
+			<h2 class="pcenter">Your Orders</h2><hr/>
+	
+			<% current_user.piggybak_orders.each do |order| -%>
+	
+				<h2>Order #<%= order.id %></h2>
+				Status: <%= order.status %><br />
+				Created at: <%= order.created_at.strftime("%m-%d-%Y") %><br />
+				<%= render "details", :order => order %>	
+	
+			<% end -%>
+		</div>
+	</div>
+</div>

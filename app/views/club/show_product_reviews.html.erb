@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="sign_up pd20">
+    <h2 class="pcenter"> <%= @item.name %> </h2><hr>
+    <%= image_tag @item.image.url, :width => '400px', :height => "400px" %>
+    <%= cart_form(@item) %>
+    <h2 class="pcenter"> Reviews </h2><hr>
+    <%if @item.product_reviews.present? %>
+    <table id="items" cellpadding="5" cellspacing="0" border="1" align="center" width=100%>
+    <tr class="gradeX">
+		<th width="30%">Title</th>
+		<th>Description</th>
+	</tr>
+    <% @item.product_reviews.each do |review| %>
+      <tr class="gradeX">
+		<td><%= review.title %></td>
+		<td><%= review.description %></td>
+	</tr>
+    <% end %>
+    </table>
+    <% end %>
+    <h2 class="pcenter"> Add Review </h2><hr>
+    <%= form_for @new_product_review, :url => product_reviews_url, html: {class: 'form-horizontal pd20 mg10'}, :method => 'POST' do |f| %>
+    <div class="form-group">
+      <%=f.label "Title", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-6">
+		<%= f.text_field :title, class: "form-control", :required => true, placeholder: 'Enter Title...'  %>
+	  </div>
+    </div>
+      <%= f.hidden_field :product_id, :value => @item.id %>
+      <%= f.hidden_field :product_type, :value => @item.class.name %>
+    <div class="form-group">
+      <%=f.label "Description", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-6">
+		<%=f.text_area :description, class: "form-control", :required => true, placeholder: 'Enter Description...'  %>
+	  </div>
+    </div>
+    <div class="">
+        <%= f.label " ", class: 'col-sm-3' %>
+        <div><%= f.submit "Submit Review", class: 'col-sm-6 btn btn-primary' %></div>
+      </div>
+    <% end %>
+ </div>
+</div>

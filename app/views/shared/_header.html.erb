@@ -9,8 +9,11 @@
 	    				<a href='#' data-toggle="dropdown"> Hi, <%= current_user.email %> </a>
 					        
 					        	
-					        	<%= link_to "| Edit Profile |", edit_user_registration_path %>
-					        	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+					        	<%= link_to "| Edit Profile |", main_app.edit_user_registration_path %>
+					        	<% if current_user.admin? %>
+					        	<%= link_to "Dashboard |", rails_admin.dashboard_url, class: 'navbar-link', method: :get%>
+					        	<% end %>
+					        	<%= link_to "Logout", main_app.destroy_user_session_path, method: :delete %>
 					        
 				       
 	        		<% else %>
@@ -35,25 +38,52 @@
 	        <li class="active"><a href="/">Home</a></li>
 	        <li><a href="/about">About Club</a></li>
 	        <li><a href="/why_club">Why Club</a></li>
-	        <li><a href="/club/1">Memberships</a></li>
-	       <!-- <li><a class="dropdown-toggle" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown" href="#">Clubs<b class="caret"></b></a>
-	         <ul class="dropdown-menu">
-                 <li><%= link_to "Coffee", club_coffee_path %></li>
-                 <li><%= link_to "Wine", club_wine_path %></li>
-                 <li><%= link_to "Beer", club_beer_path %></li>
-                 <li><%= link_to "Cigars", club_cigars_path %></li>
-                 <li><%= link_to "Computer Games", club_games_path %></li>
-                 <li><%= link_to "Flowers", club_flowers_path %></li>
-             </ul>
-	        </li> -->
-	        
-	        <li><%= link_to "Review", punchqueries_new_path %></li>
+	        <li><a href="/club/1">Memberships</a></li>	        
+	        <li><%= link_to "Review", main_app.punchqueries_new_path %></li>
+	        <li><% if current_user.present? %>
+	           <%= link_to "Send a gift", "/club/1/send_gift" %>
+	        <% else %>
+				<a id="login_model" style="width:100%;" href="#login_modal" data-toggle="modal">Send a gift</a>
+				<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" width: "200px">
+				  <div class="modal-dialog">
+					<div class="modal-content" style="width:310px">
+						<div class="modal-body">
+							<%= link_to "I am a member", "/users/sign_in", :class => "btn btn-primary" %>
+							<%= link_to "I am not a member", "/users/sign_up", :class => "btn btn-primary" %>
+						</div>
+					</div>
+				  </div>
+				</div>
+			<% end %>
+	        </li>
+	        <li><%= link_to "Your Orders", piggybak.orders_list_path %></li>
 	                
 	      </ul>
+	      <% if current_user.present? %>
+	      <%= link_to piggybak.cart_url, :class => "cart_link" do %>
+				<%= image_tag("cart.png", :alt => "cart", :class => "cart") %>
+		  <% end %>
+		  <% end %>
 	    </div><!-- /.nav-collapse -->
 	  </div><!-- /.container -->
 	</div><!-- /.navbar -->
 <script type="text/javascript">
+	$("a#login_model").on('click',function(e) {
+		e.preventDefault();
+		$('#myModal').modal('show');
+	});
+	
+	function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+	}
 
+	$('.modal').on('show', centerModal);
+	$(window).on("resize", function () {
+		$('.modal:visible').each(centerModal);
+	});
 </script>
 

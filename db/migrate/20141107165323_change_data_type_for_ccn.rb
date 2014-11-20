@@ -1,6 +1,6 @@
 class ChangeDataTypeForCcn < ActiveRecord::Migration
  def up
-    change_column :memberships, :ccn, :text
+    #change_column :memberships, :ccn, :text
 end
 def down
     # This might cause trouble if you have strings longer

@@ -11,4 +11,13 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password, :role,:name,:dob,
 :ccn, :msd, :dom, :med, :amount) }
     end
+    
+     rescue_from CanCan::AccessDenied do |exception|
+          puts "user........................."
+          puts current_user.roles.inspect
+          puts "#######################################"
+          puts exception.inspect
+          flash[:notice] = "You are not authorized to access this page."
+          redirect_to "/club"
+     end 
 end
