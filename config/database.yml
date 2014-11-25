@@ -13,7 +13,7 @@ development:
   encoding: utf8
   pool: 5
   username: root
-  password: 
+  password: root
   database: club1
 
 production:
