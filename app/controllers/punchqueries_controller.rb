@@ -12,7 +12,7 @@ class PunchqueriesController < ApplicationController
     respond_to do |format|
   	if @punch.save
       ReviewMailer.review_email(@punch).deliver
-  		 format.html { redirect_to(punchqueries_new_path, notice: 'Your Review is successfuly submited. Thanks for your FEEDBACK') }
+  		 format.html { redirect_to(punchqueries_new_path, notice: 'Your Query is successfuly submited. Thanks for your FEEDBACK.') }
       end
   	end
   end
