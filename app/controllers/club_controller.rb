@@ -46,8 +46,9 @@ class ClubController < ApplicationController
     params[:membership][:user_id]=current_user.id
     @membership=Membership.new(params_punch)
     if @membership.save
-     
       redirect_to root_url
+    else 
+      render 'new'#:text => "please check the credit card number"
     end
   end
   private

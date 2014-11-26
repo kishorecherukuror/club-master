@@ -5,8 +5,6 @@ class Game < ActiveRecord::Base
     :path => ":rails_root/public/system/images/game/:id/:style/:basename.:extension"
     
     validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  
-  
   validates_presence_of :name
   acts_as_sellable
 end

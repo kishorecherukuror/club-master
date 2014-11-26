@@ -1,13 +1,19 @@
 <div class="container">
   <div class="sign_up pd20">
-    <h2 class="pcenter"> Welcome to the ‘Monthly Club </h2><hr>
+    <h2 class="pcenter"> Welcome to the ‘Monthly Club' </h2><hr>
     <%= form_for(@membership, url: "/club", html: {class: 'form-horizontal pd20 mg10', :onsubmit=>"return validateAge()"}) do |f| %>
-      
+    <% if @membership.errors.any? %>
+      <ul>
+  <% @membership.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  <%end%>
+</ul>
       <div class="form-group">
         <%= f.label "membership Type ", class: 'col-sm-3 control-label', for: 'membership_ccn' %>
         <div class="col-sm-6">
         
-          <%= f.select :member_type, options_for_select([["Months", ""], "Coffee", "Wine", "Beer", "Cigar", "Games","Flowers"],params[:member_type].capitalize), :class => 'text-field form-control', class: 'dom', :value=>params[:member_type]  %>
+          <%= f.select :member_type, options_for_select([["Type", ""], "Coffee", "Wine", "Beer", "Cigar", "Games","Flowers"],params[:member_type]), :class => 'text-field form-control', class: 'dom', :value=>params[:member_type]  %>
           <%= text_field_tag "dob", "", :value=>current_user.dob, :id=>"membership_dob", autocomplete: "off", class: "form-control",class: "datepicker", required: true, placeholder: 'Enter DOB', :style=>"visibility: hidden" %>
            
         </div>
@@ -57,10 +63,15 @@
   </div>
 </div>
 <script>
+
 $('.datepicker').datepicker({
-    startDate: '-3d'
-})
-Boolean. Default: false
+    startDate: '-3d',
+    autoclose: true    
+});
+$('.dobdatepicker').datepicker({
+  autoclose: true
+  });
+
 </script>
 <script>
     $(document).ready(function(){
@@ -109,15 +120,17 @@ Boolean. Default: false
      function set_end_date()
      {
        var start_date = $('#msd').val();
+       
        if (start_date!="")
        {
         var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
-        var dt = new Date(start_date.replace(pattern,'$3-$2-$1'));
+        var dt = new Date(start_date);
         var duration = $('#membership_dom').val();
+        
         if (duration=="")
           duration="0";
         dt.setMonth(dt.getMonth() + parseInt(duration) )
-        $('#membership_med').val(dt.getDate() + "/" + (dt.getMonth()+1) + "/" + dt.getFullYear())
+        $('#membership_med').val((dt.getMonth()+1) + "/" + dt.getDate() + "/" + dt.getFullYear());
       }
      }
 

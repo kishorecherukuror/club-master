@@ -149,8 +149,9 @@ $('.dobdatepicker').datepicker({
        if (start_date!="")
        {
         var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
-        var dt = new Date(start_date.replace(pattern,'$3-$1-$2'));
+        var dt = new Date(start_date);
         var duration = $('#user_dom').val();
+       
         if (duration=="")
           duration="0";
         dt.setMonth(dt.getMonth() + parseInt(duration) );
